@@ -278,7 +278,7 @@ func trigger_parry() -> void:
 	
 	# Feedback visual
 	var label = Label.new()
-	label.text = "PARRY!"
+	label.text = "PARRY GIL!"
 	label.modulate = Color.CYAN
 	label.add_theme_font_size_override("font_size", 32)
 	label.position = global_position + Vector2(-50, -70)
