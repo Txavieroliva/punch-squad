@@ -89,4 +89,6 @@ func trigger_combo(name: String, id: int) -> void:
 
 # Función para recibir daño (llamada desde parry_system)
 func take_damage(amount: int, attacker) -> void:
-	parry_system.take_damage(amount, attacker)
+	if Input.is_action_just_pressed("ui_accept"):
+		print("dañocvccvcvdasd")
+		parry_system.take_damage(amount, attacker)
