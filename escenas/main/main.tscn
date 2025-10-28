@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://8v6lb6j1gjyn"]
+
+[ext_resource type="Texture2D" uid="uid://bijaw47vor1yh" path="res://assets/fondos/Fondo.jpg" id="1_e0ogj"]
+[ext_resource type="PackedScene" uid="uid://x75mri3gi67o" path="res://escenas/jugador/jugador_1.tscn" id="2_e0ogj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ogj"]
+size = Vector2(1163, 60)
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(575.5, 325.75)
+scale = Vector2(0.9608333, 0.9637037)
+texture = ExtResource("1_e0ogj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer"]
+position = Vector2(570, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D"]
+shape = SubResource("RectangleShape2D_e0ogj")
+
+[node name="Jugador1" parent="CanvasLayer" instance=ExtResource("2_e0ogj")]
+position = Vector2(219.00002, 491.00003)
