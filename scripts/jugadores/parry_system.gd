@@ -1,8 +1,8 @@
 extends Node
 
 @onready var player = get_parent()
-@onready var anim_manager = $"../AnimationManager"
-@onready var style_system = $"../StyleSystem"
+@onready var anim_manager = player.get_node("AnimationManager")
+@onready var style_system = player.get_node("StyleSystem")
 
 @export var parry_window: float = 0.15
 @export var parry_style_bonus: int = 1
@@ -11,7 +11,7 @@ var parry_active: bool = false
 var parry_timer: float = 0.0
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("block_p1") and player.is_blocking:
+	if Input.is_action_pressed("block_" + player.player_suffix) and player.is_blocking:
 		anim_manager.play("Block")
 	if parry_active:
 		parry_timer -= delta
@@ -48,10 +48,9 @@ func trigger_parry() -> void:
 	parry_active = false
 	player.is_blocking = false
 	print("¡PARRY PERFECTO!")
-	if style_system.current_style_level < 4:
+	if style_system.current_style_level <= 4:
 		style_system.current_style_level += 1
 	style_system.current_style_points = style_system.style_points_to_next[style_system.current_style_level] * 0.5
-	# Feedback visual
 	var label = Label.new()
 	label.text = "PARRY!"
 	label.modulate = Color.CYAN
