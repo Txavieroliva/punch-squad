@@ -16,9 +16,16 @@ func _on_sprite_animation_finished() -> void:
 	var current_anim = sprite.animation
 	emit_signal("animation_finished", current_anim)
 	
-	if current_anim in ["Basic_attack", "Strong_attack", "Uppercut", "Combo_1", "Hurt"]:
+	# SOLO ATAQUES Y COMBOS VUELVEN A IDLE
+	if current_anim in ["Basic_attack", "Strong_attack", "Uppercut", "Combo_1"]:
 		if not player.is_blocking:
 			play("Idle")
-			# RESETEAR FLAG DE HURT
-			if current_anim == "Hurt":
-				player.is_hurt_playing = false
+
+# === EFECTO DE PARPADEO BLANCO (MOVIDO AQUÍ) ===
+func _process(delta: float) -> void:
+	if player.hurt_flash_timer > 0:
+		player.hurt_flash_timer -= delta
+		var flash = sin(player.hurt_flash_timer * 25) * 0.5 + 0.5  # Parpadeo rápido
+		sprite.modulate = Color.WHITE.lerp(Color(2.5, 2.5, 2.5), flash)
+		if player.hurt_flash_timer <= 0:
+			sprite.modulate = Color.WHITE

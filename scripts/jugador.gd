@@ -19,11 +19,13 @@ var is_dead: bool = false
 var knockback_velocity: Vector2 = Vector2.ZERO
 var stun_timer: float = 0.0
 var is_stunned: bool = false
-var is_hurt_playing: bool = false
+var hurt_flash_timer: float = 0.0  # ← NUEVA
+var hurt_flash_intensity: float = 0.0
 
 func _ready() -> void:
 	animation_manager.animation_finished.connect(_on_animation_finished)
 	$PunchHitbox.body_entered.connect(_on_punch_hitbox_body_entered)
+	disable_hitbox()
 
 func _process(delta: float) -> void:
 	# DETECTAR COMBO UPPERCUT: C + V PRESIONADOS AL MISMO TIEMPO
@@ -110,20 +112,17 @@ func trigger_combo(name: String, id: int) -> void:
 	combo_active = false
 
 func take_damage(amount: int, attacker) -> void:
-	if parry_system.take_damage(amount, attacker):
-		return
+	if parry_system.take_damage(amount, attacker): return
 	
 	health = max(0, health - amount)
-	print("HP: " + str(health))
 	
-	# REPRODUCIR HURT SOLO UNA VEZ
-	if not is_hurt_playing:
-		is_hurt_playing = true
-		animation_manager.play("Hurt", true)
+	# PARPADEO BLANCO
+	hurt_flash_timer = 0.3
+	hurt_flash_intensity = 1.0
 	
-	# KNOCKBACK
+	# KNOCKBACK + STUN
 	var kb_dir = sign(global_position.x - attacker.global_position.x)
-	knockback_velocity = Vector2(kb_dir * -800, -150)
+	knockback_velocity = Vector2(kb_dir * -800, 0)
 	stun_timer = amount * 0.02
 	is_stunned = true
 	
