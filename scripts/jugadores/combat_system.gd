@@ -4,9 +4,9 @@ extends Node
 @onready var anim_manager = player.get_node("AnimationManager")
 @onready var style_system = player.get_node("StyleSystem")
 
-@export var basic_damage: int = 10
-@export var strong_damage: int = 20
-@export var uppercut_damage: int = 35  # NUEVO
+@export var basic_damage: int = 3
+@export var strong_damage: int = 10
+@export var uppercut_damage: int = 15  # NUEVO
 @export var combo_window: float = 1.2
 
 var uppercut_cooldown: float = 0.0  # Evita spam

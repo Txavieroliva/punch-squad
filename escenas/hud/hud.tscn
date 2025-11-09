@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://bni3n01vdx3c0"]
+
+[ext_resource type="Script" uid="uid://uessbqgfedbn" path="res://scripts/hud/hud.gd" id="1_s6bea"]
+[ext_resource type="Texture2D" uid="uid://boy811w5bqdm8" path="res://assets/UI/rounds.png" id="2_ejts4"]
+[ext_resource type="Texture2D" uid="uid://drd1bkvbibmyp" path="res://assets/UI/Sprite-BarrasDeVida-over.png" id="2_s6bea"]
+[ext_resource type="Texture2D" uid="uid://cqjxlsxbw2y4w" path="res://assets/UI/Sprite-BarrasDeVida-progress.png" id="3_nhg18"]
+[ext_resource type="PackedScene" uid="uid://dspf1c6nhrfo2" path="res://escenas/hud/style_meter.tscn" id="5_17a4b"]
+[ext_resource type="Texture2D" uid="uid://mq24qku0r8ge" path="res://assets/UI/Sprite-BarrasDeVida-over-p2.png" id="5_ejts4"]
+[ext_resource type="Texture2D" uid="uid://byctvg1hhnj2i" path="res://assets/UI/Sprite-BarrasDeVida-progress-p2.png" id="5_wwni0"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_s6bea")
+
+[node name="P1Rounds" type="HBoxContainer" parent="."]
+offset_left = 658.0
+offset_top = 36.0
+offset_right = 2166.0
+offset_bottom = 536.0
+scale = Vector2(0.05, 0.045)
+
+[node name="P1Round1" type="TextureRect" parent="P1Rounds"]
+layout_mode = 2
+texture = ExtResource("2_ejts4")
+
+[node name="P1Round2" type="TextureRect" parent="P1Rounds"]
+layout_mode = 2
+texture = ExtResource("2_ejts4")
+
+[node name="P1Round3" type="TextureRect" parent="P1Rounds"]
+layout_mode = 2
+texture = ExtResource("2_ejts4")
+
+[node name="P1Container" type="VBoxContainer" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="P1HealthBar" type="TextureProgressBar" parent="P1Container"]
+layout_mode = 2
+max_value = 350.0
+texture_under = ExtResource("3_nhg18")
+texture_progress = ExtResource("2_s6bea")
+
+[node name="P1StyleMeter" parent="P1Container" instance=ExtResource("5_17a4b")]
+
+[node name="CenterTimer" type="Label" parent="."]
+offset_left = 906.0
+offset_right = 907.0
+offset_bottom = 23.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+
+[node name="P2Rounds" type="HBoxContainer" parent="."]
+offset_left = 1174.0
+offset_top = 39.0
+offset_right = 2682.0
+offset_bottom = 539.0
+scale = Vector2(0.05, 0.05)
+
+[node name="P2Round1" type="TextureRect" parent="P2Rounds"]
+layout_mode = 2
+texture = ExtResource("2_ejts4")
+
+[node name="P2Round2" type="TextureRect" parent="P2Rounds"]
+layout_mode = 2
+texture = ExtResource("2_ejts4")
+
+[node name="P2Round3" type="TextureRect" parent="P2Rounds"]
+layout_mode = 2
+texture = ExtResource("2_ejts4")
+
+[node name="P2Container" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -777.0
+offset_top = -1.0
+offset_right = -265.0
+offset_bottom = 44.0
+grow_horizontal = 0
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="P2HealthBar" type="TextureProgressBar" parent="P2Container"]
+layout_direction = 3
+layout_mode = 2
+max_value = 350.0
+fill_mode = 1
+texture_under = ExtResource("5_wwni0")
+texture_progress = ExtResource("5_ejts4")
+
+[node name="P2StyleMeter" parent="P2Container" instance=ExtResource("5_17a4b")]

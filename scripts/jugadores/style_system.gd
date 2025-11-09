@@ -1,5 +1,7 @@
 extends Node
 
+signal style_changed(level: int, points: float, threshold: float)
+
 @onready var player = get_parent()
 
 @export var style_points_to_next: Array = [100, 200, 300, 400]
@@ -24,9 +26,14 @@ func _process(delta: float) -> void:
 				current_style_level -= 1
 				current_style_points = style_points_to_next[current_style_level] * 0.8
 				print("¡Estilo bajó a: " + get_style_letter() + "!")
+			
+			# 🔔 Emitimos la señal cada vez que cambian los puntos
+			emit_signal("style_changed", current_style_level, current_style_points, style_points_to_next[current_style_level])
 
 func add_style_points(points: int) -> void:
-	if current_style_level >= 4: return
+	if current_style_level >= 4:
+		return
+
 	current_style_points += points
 	var threshold = style_points_to_next[current_style_level]
 	if current_style_points >= threshold:
@@ -35,8 +42,10 @@ func add_style_points(points: int) -> void:
 		print("¡Estilo subido a: " + get_style_letter() + "!")
 		play_style_up_effect()
 
+	# 🔔 Emitimos la señal cuando suben los puntos o nivel
+	emit_signal("style_changed", current_style_level, current_style_points, threshold)
+
 func play_style_up_effect() -> void:
-	# Igual que antes
 	var label = Label.new()
 	label.text = get_style_letter() + "!"
 	label.modulate = [Color.WHITE, Color.YELLOW, Color.ORANGE, Color.RED, Color.PURPLE][current_style_level]
@@ -67,3 +76,4 @@ func apply_hit_penalty() -> void:
 		current_style_level -= 1
 		current_style_points = style_points_to_next[current_style_level] * 0.7
 		print("¡Estilo bajó por golpe! Ahora: " + get_style_letter())
+		emit_signal("style_changed", current_style_level, current_style_points, style_points_to_next[current_style_level])

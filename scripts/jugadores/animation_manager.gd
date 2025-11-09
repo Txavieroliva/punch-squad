@@ -9,8 +9,11 @@ func _ready() -> void:
 	sprite.animation_finished.connect(_on_sprite_animation_finished)
 
 func play(animation_name: String, force: bool = false) -> void:
+	if player.is_dead and animation_name != "Death":
+		return # No reproducir nada si está muerto
 	if force or sprite.animation != animation_name:
 		sprite.play(animation_name)
+
 
 func _on_sprite_animation_finished() -> void:
 	var current_anim = sprite.animation

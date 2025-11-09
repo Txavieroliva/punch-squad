@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://c34qfexukcqwt" path="res://assets/personajes/zombie/Sheet_ZombieParry.png" id="3_ad4xh"]
 [ext_resource type="Texture2D" uid="uid://bwsvamdraxmkj" path="res://assets/personajes/zombie/Sheet_ZombieDeath.png" id="4_452h5"]
 [ext_resource type="Texture2D" uid="uid://bweoybqj1nldk" path="res://assets/personajes/zombie/Sheet_ZombieCombo1.png" id="4_ad4xh"]
-[ext_resource type="Texture2D" uid="uid://c1h84efyssh11" path="res://assets/personajes/Martial Hero 2/Sprites/Jump.png" id="4_j1362"]
-[ext_resource type="Texture2D" uid="uid://d1v1uemqrv1lo" path="res://assets/personajes/Martial Hero 2/Sprites/Fall.png" id="5_ocyyb"]
 [ext_resource type="Texture2D" uid="uid://ciqtdjra6p6xn" path="res://assets/personajes/zombie/Sheet_ZombieRun.png" id="7_3aobg"]
+[ext_resource type="Texture2D" uid="uid://un5ebwolviv6" path="res://assets/personajes/zombie/Sheet_ZombieJump.png" id="7_kbgmq"]
 [ext_resource type="Script" uid="uid://b3gaqdjtowgfy" path="res://scripts/jugadores/combat_system.gd" id="8_c6rmq"]
 [ext_resource type="Texture2D" uid="uid://cseubyuducpe1" path="res://assets/personajes/zombie/Sheet_ZombieFuerte.png" id="8_kbgmq"]
+[ext_resource type="Texture2D" uid="uid://dq6m5wwtrhwmw" path="res://assets/personajes/zombie/Sheet_ZombieFall.png" id="8_rknti"]
 [ext_resource type="Script" uid="uid://bftpyuf2xuoru" path="res://scripts/jugadores/style_system.gd" id="9_c1upt"]
 [ext_resource type="Texture2D" uid="uid://c8vtkfa8s4ixt" path="res://assets/personajes/zombie/Sheet_ZombieUppercut.png" id="10_3aobg"]
 [ext_resource type="Script" uid="uid://c3nnij0khog5k" path="res://scripts/jugadores/parry_system.gd" id="10_wmmaj"]
@@ -76,7 +76,7 @@ region = Rect2(480, 0, 120, 120)
 atlas = ExtResource("3_ad4xh")
 region = Rect2(0, 0, 120, 120)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1w6e6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4366"]
 atlas = ExtResource("8_kbgmq")
 region = Rect2(0, 0, 120, 120)
 
@@ -88,21 +88,21 @@ region = Rect2(0, 0, 120, 120)
 atlas = ExtResource("4_452h5")
 region = Rect2(120, 0, 120, 120)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ayyb"]
-atlas = ExtResource("4_j1362")
-region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc6a0"]
+atlas = ExtResource("7_kbgmq")
+region = Rect2(120, 0, 120, 120)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2k4o"]
-atlas = ExtResource("4_j1362")
-region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwnh8"]
+atlas = ExtResource("7_kbgmq")
+region = Rect2(240, 0, 120, 120)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahj5w"]
-atlas = ExtResource("5_ocyyb")
-region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_weui2"]
+atlas = ExtResource("8_rknti")
+region = Rect2(120, 0, 120, 120)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dv34g"]
-atlas = ExtResource("5_ocyyb")
-region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d565x"]
+atlas = ExtResource("7_kbgmq")
+region = Rect2(120, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kcuhy"]
 atlas = ExtResource("7_3aobg")
@@ -164,7 +164,7 @@ region = Rect2(360, 0, 120, 120)
 atlas = ExtResource("10_3aobg")
 region = Rect2(480, 0, 120, 120)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_v1hcy"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_clxmg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -189,7 +189,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Block",
-"speed": 1.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -233,7 +233,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_xfmxt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1w6e6")
+"texture": SubResource("AtlasTexture_u4366")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfmxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4366")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfmxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4366")
 }],
 "loop": false,
 "name": &"Hurt",
@@ -252,23 +264,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1ayyb")
+"texture": SubResource("AtlasTexture_jc6a0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2k4o")
+"texture": SubResource("AtlasTexture_rwnh8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ahj5w")
+"texture": SubResource("AtlasTexture_weui2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dv34g")
+"texture": SubResource("AtlasTexture_weui2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d565x")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump_fall",
 "speed": 5.0
 }, {
@@ -343,14 +358,13 @@ size = Vector2(36.691288, 68.446945)
 size = Vector2(23.666668, 51.666668)
 
 [node name="Jugador1" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 script = ExtResource("1_xw8t7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.83888894, 0.7772223)
-sprite_frames = SubResource("SpriteFrames_v1hcy")
-animation = &"Hurt"
-frame_progress = 0.023539318
+scale = Vector2(0.838889, 0.77722234)
+sprite_frames = SubResource("SpriteFrames_clxmg")
+animation = &"Uppercut"
 
 [node name="PlayerHitboxCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.33333334, 21.666668)
