@@ -5,7 +5,7 @@ extends Node
 @onready var punch_hitbox: Area2D = player.get_node("PunchHitbox")
 @onready var punch_shape: CollisionShape2D = punch_hitbox.get_node("CollisionShape2D")
 
-@export var speed: float = 450.0
+@export var speed: float = 750.0
 @export var jump_velocity: float = -680.0
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
