@@ -189,10 +189,17 @@ func die() -> void:
 	get_parent().player_died(self)
 
 func _on_style_changed(level: int, points: float, threshold: float) -> void:
-	# Llama al HUD global
-	if get_tree().has_node("/root/Main/HUD"):
-		var hud = get_tree().root.get_node("Main/HUD")
-		if player_suffix == "p1":
-			hud.update_style_meter(1, level, points, threshold)
-		else:
-			hud.update_style_meter(2, level, points, threshold)
+	var hud = get_node_or_null("/root/Main/HUD")
+	if hud == null:
+		return
+
+	# Obtener la letra correspondiente según nivel
+	var style_letter = ["d", "c", "b", "a", "s"][level]
+
+	# Ruta a la escena de la letra (ej: res://ui/style_letters/D.tscn)
+	var letter_path = "res://ui/style_letter_" + style_letter + ".tscn"
+
+	if ResourceLoader.exists(letter_path):
+		var letter_scene = load(letter_path)
+		# Mostrar la letra correspondiente en el HUD
+		hud.show_style_letter(1 if player_suffix == "p1" else 2, letter_scene)

@@ -12,10 +12,10 @@
 script = ExtResource("1_s6bea")
 
 [node name="P1Rounds" type="HBoxContainer" parent="."]
-offset_left = 658.0
-offset_top = 36.0
-offset_right = 2166.0
-offset_bottom = 536.0
+offset_left = 702.0
+offset_top = 45.0
+offset_right = 2210.0
+offset_bottom = 545.0
 scale = Vector2(0.05, 0.045)
 
 [node name="P1Round1" type="TextureRect" parent="P1Rounds"]
@@ -30,7 +30,14 @@ texture = ExtResource("2_ejts4")
 layout_mode = 2
 texture = ExtResource("2_ejts4")
 
+[node name="P1StyleMeter" parent="." instance=ExtResource("5_17a4b")]
+position = Vector2(0, 342)
+scale = Vector2(1.5, 1.5)
+
 [node name="P1Container" type="VBoxContainer" parent="."]
+offset_top = 12.0
+offset_right = 540.0
+offset_bottom = 44.0
 scale = Vector2(1.5, 1.5)
 
 [node name="P1HealthBar" type="TextureProgressBar" parent="P1Container"]
@@ -39,20 +46,18 @@ max_value = 350.0
 texture_under = ExtResource("3_nhg18")
 texture_progress = ExtResource("2_s6bea")
 
-[node name="P1StyleMeter" parent="P1Container" instance=ExtResource("5_17a4b")]
-
 [node name="CenterTimer" type="Label" parent="."]
 offset_left = 906.0
 offset_right = 907.0
 offset_bottom = 23.0
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 55
 
 [node name="P2Rounds" type="HBoxContainer" parent="."]
-offset_left = 1174.0
-offset_top = 39.0
-offset_right = 2682.0
-offset_bottom = 539.0
+offset_left = 1149.0
+offset_top = 45.0
+offset_right = 2657.0
+offset_bottom = 545.0
 scale = Vector2(0.05, 0.05)
 
 [node name="P2Round1" type="TextureRect" parent="P2Rounds"]
@@ -66,6 +71,10 @@ texture = ExtResource("2_ejts4")
 [node name="P2Round3" type="TextureRect" parent="P2Rounds"]
 layout_mode = 2
 texture = ExtResource("2_ejts4")
+
+[node name="P2StyleMeter" parent="." instance=ExtResource("5_17a4b")]
+position = Vector2(1679.0001, 348)
+scale = Vector2(1.5, 1.5)
 
 [node name="P2Container" type="VBoxContainer" parent="."]
 anchors_preset = 1
@@ -87,5 +96,3 @@ max_value = 350.0
 fill_mode = 1
 texture_under = ExtResource("5_wwni0")
 texture_progress = ExtResource("5_ejts4")
-
-[node name="P2StyleMeter" parent="P2Container" instance=ExtResource("5_17a4b")]

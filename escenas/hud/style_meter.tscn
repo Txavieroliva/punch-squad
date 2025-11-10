@@ -1,46 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dspf1c6nhrfo2"]
+[gd_scene load_steps=2 format=3 uid="uid://dspf1c6nhrfo2"]
 
-[ext_resource type="PackedScene" uid="uid://c3xokogmglj5g" path="res://escenas/hud/style_letter.tscn" id="1_ji3bt"]
 [ext_resource type="Script" uid="uid://mp4df1ic02i8" path="res://scripts/hud/style_meter.gd" id="1_lgyj1"]
-[ext_resource type="Texture2D" uid="uid://cwy453bdlftcy" path="res://assets/UI/Letras/D_Borde.png" id="2_scmlc"]
-[ext_resource type="Texture2D" uid="uid://qs5v2byhinbg" path="res://assets/UI/Letras/D_Barra.png" id="3_lgyj1"]
-[ext_resource type="Texture2D" uid="uid://o5j66akfwjmc" path="res://assets/UI/Letras/C_Borde.png" id="4_qj0ng"]
-[ext_resource type="Texture2D" uid="uid://cu3wmklojgjil" path="res://assets/UI/Letras/C_Barra.png" id="5_ex6ks"]
-[ext_resource type="Texture2D" uid="uid://dtfrv2eug6di4" path="res://assets/UI/Letras/B_Borde.png" id="6_dr8cc"]
-[ext_resource type="Texture2D" uid="uid://cs7yn3x26nixx" path="res://assets/UI/Letras/B_Barra.png" id="7_r2m5a"]
-[ext_resource type="Texture2D" uid="uid://ixgywfuq2ig0" path="res://assets/UI/Letras/A_Barra.png" id="8_n87jv"]
-[ext_resource type="Texture2D" uid="uid://qmbgsbdfxm6o" path="res://assets/UI/Letras/A_Borde.png" id="9_tmlqw"]
-[ext_resource type="Texture2D" uid="uid://dmw37b4egsb7t" path="res://assets/UI/Letras/S_Borde.png" id="10_j0w57"]
-[ext_resource type="Texture2D" uid="uid://0iw3ykvsnctd" path="res://assets/UI/Letras/S_Barra.png" id="11_yho70"]
 
-[node name="StyleMeter" type="Node"]
+[node name="StyleMeter" type="Node2D"]
 script = ExtResource("1_lgyj1")
-
-[node name="StyleLetter_D" parent="." instance=ExtResource("1_ji3bt")]
-texture_under = ExtResource("2_scmlc")
-texture_progress = ExtResource("3_lgyj1")
-description = "OMADOR"
-
-[node name="StyleLetter_C" parent="." instance=ExtResource("1_ji3bt")]
-texture_under = ExtResource("4_qj0ng")
-texture_progress = ExtResource("5_ex6ks")
-letter_name = "C"
-description = "HASCARRILLO"
-
-[node name="StyleLetter_B" parent="." instance=ExtResource("1_ji3bt")]
-texture_under = ExtResource("6_dr8cc")
-texture_progress = ExtResource("7_r2m5a")
-letter_name = "B"
-description = "ERRETIN"
-
-[node name="StyleLetter_A" parent="." instance=ExtResource("1_ji3bt")]
-texture_under = ExtResource("8_n87jv")
-texture_progress = ExtResource("9_tmlqw")
-letter_name = "A"
-description = "TRODEN"
-
-[node name="StyleLetter_S" parent="." instance=ExtResource("1_ji3bt")]
-texture_under = ExtResource("10_j0w57")
-texture_progress = ExtResource("11_yho70")
-letter_name = "S"
-description = "ARPADO"

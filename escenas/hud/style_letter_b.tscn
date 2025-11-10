@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://djrq3ajfrxkhb"]
+
+[node name="StyleLetter_D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0.43137255, 1, 1)
+theme_override_font_sizes/font_size = 55
+text = "B"
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 30.0
+offset_right = 149.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0, 0.43137255, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "ERRETIN"
