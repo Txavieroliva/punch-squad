@@ -2,10 +2,14 @@ extends Node2D
 
 @onready var player1 = $Jugador1
 @onready var player2 = $Jugador2
+@onready var player1_hitbox = $Jugador1/PlayerHitboxArea
+@onready var player1_punch_hitbox = $Jugador1/PunchHitbox
+@onready var player2_hitbox = $Jugador2/PlayerHitboxArea
+@onready var player2_punch_hitbox = $Jugador2/PunchHitbox
+@onready var player1_style = $Jugador1/StyleSystem
+@onready var player2_style = $Jugador2/StyleSystem   # ✅ corregido
 @onready var hud = $HUD
 
-@onready var player1_style = $Jugador1/StyleSystem
-@onready var player2_style = $Jugador2/StyleSystem
 
 var p1_rounds: int = 0
 var p2_rounds: int = 0
@@ -73,8 +77,39 @@ func reset_round():
 	round_active = true
 	hud.update_timer(round_timer)
 	hud.update_rounds(p1_rounds, p2_rounds)
-
-	player1.reset()
-	player2.reset()
+	
+	# RESET P1
+	player1.health = player1.max_health
+	player1.is_dead = false
+	player1.knockback_velocity = Vector2.ZERO
+	player1.stun_timer = 0.0
+	player1.is_stunned = false
+	player1.hurt_flash_timer = 0.0
+	player1.current_combo = []
+	player1.combo_timer = 0.0
+	player1.combo_active = false
+	player1.style_system.current_style_level = 0
+	player1.style_system.current_style_points = 0.0
+	player1.velocity = Vector2.ZERO
 	player1.global_position = p1_start_pos
+	player1_hitbox.monitoring = true
+	player1_punch_hitbox.monitoring = false
+	player1.animation_manager.play("Idle")
+	
+	# RESET P2
+	player2.health = player2.max_health
+	player2.is_dead = false
+	player2.knockback_velocity = Vector2.ZERO
+	player2.stun_timer = 0.0
+	player2.is_stunned = false
+	player2.hurt_flash_timer = 0.0
+	player2.current_combo = []
+	player2.combo_timer = 0.0
+	player2.combo_active = false
+	player2.style_system.current_style_level = 0
+	player2.style_system.current_style_points = 0.0
+	player2.velocity = Vector2.ZERO
 	player2.global_position = p2_start_pos
+	player2_hitbox.monitoring = true
+	player2_punch_hitbox.monitoring = false
+	player2.animation_manager.play("Idle")
