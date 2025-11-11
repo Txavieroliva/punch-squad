@@ -108,3 +108,16 @@ func play_style_up_effect() -> void:
 	tween.tween_property(label, "position:y", label.position.y - 60, 1.0)
 	tween.parallel().tween_property(label, "modulate:a", 0, 1.0)
 	tween.tween_callback(label.queue_free)
+
+func reset_style() -> void:
+	# Reset lógico
+	current_style_level = 0
+	current_style_points = 0.0
+	style_decay_timer = 0.0
+	last_attack_type = ""
+	# Determinar threshold seguro (0 si no existe)
+	var threshold := 0
+	if current_style_level < style_points_to_next.size():
+		threshold = style_points_to_next[current_style_level]
+	# Emitir señal para que la UI se actualice
+	emit_signal("style_changed", current_style_level, current_style_points, threshold)

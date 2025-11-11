@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=3 uid="uid://ssftb0xekxtl"]
+
+[ext_resource type="Script" uid="uid://cuvbc4som4iru" path="res://scripts/menu/local.gd" id="1_btofv"]
+[ext_resource type="Texture2D" uid="uid://xphe5qc1drba" path="res://assets/menu/tellos_de_2.png" id="1_qq6rk"]
+[ext_resource type="Texture2D" uid="uid://w8sn0dvimf0t" path="res://assets/menu/logo editable.png" id="2_btofv"]
+[ext_resource type="Texture2D" uid="uid://dr4hyhj2lbp7p" path="res://assets/menu/Captura de pantalla 2025-11-10 232600.png" id="3_5j12l"]
+[ext_resource type="Texture2D" uid="uid://d4litqo2yjg1g" path="res://assets/menu/Captura de pantalla 2025-11-10 232739.png" id="4_34vyu"]
+[ext_resource type="Texture2D" uid="uid://bf0jmbl5slths" path="res://assets/menu/Captura de pantalla 2025-11-10 234227.png" id="5_5xp8y"]
+[ext_resource type="Texture2D" uid="uid://dhgr74yv7spi1" path="res://assets/menu/Captura de pantalla 2025-11-10 234533.png" id="6_htrrj"]
+[ext_resource type="Texture2D" uid="uid://3qdbccr4et6x" path="res://assets/menu/button pressed.png" id="7_fr0j5"]
+
+[node name="local" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_btofv")
+
+[node name="Imagenes" type="Node" parent="."]
+
+[node name="Fondo" type="TextureRect" parent="Imagenes"]
+offset_right = 1926.0
+offset_bottom = 1079.0
+texture = ExtResource("1_qq6rk")
+
+[node name="Logo" type="TextureRect" parent="Imagenes"]
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 302.0
+offset_bottom = 291.0
+texture = ExtResource("2_btofv")
+expand_mode = 1
+
+[node name="PJ Nuevo" type="TextureRect" parent="Imagenes"]
+offset_left = 1495.0
+offset_top = 31.0
+offset_right = 1920.0
+offset_bottom = 326.0
+texture = ExtResource("3_5j12l")
+
+[node name="SkinPJ" type="TextureRect" parent="Imagenes"]
+offset_left = 1405.0
+offset_top = 371.0
+offset_right = 1917.0
+offset_bottom = 680.0
+texture = ExtResource("4_34vyu")
+
+[node name="ColorRect" type="ColorRect" parent="Imagenes/SkinPJ"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 240.0
+offset_right = 479.0
+offset_bottom = 285.0
+color = Color(0.7647059, 0.79607844, 0.7529412, 1)
+
+[node name="TimerLabel" type="Label" parent="Imagenes/SkinPJ"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 322.0
+offset_top = 238.0
+offset_right = 472.0
+offset_bottom = 301.0
+theme_override_font_sizes/font_size = 35
+
+[node name="Gemas" type="TextureRect" parent="Imagenes"]
+offset_left = 315.0
+offset_top = 85.0
+offset_right = 679.0
+offset_bottom = 214.0
+texture = ExtResource("5_5xp8y")
+
+[node name="ColorRect" type="ColorRect" parent="Imagenes/Gemas"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 20.0
+offset_right = 256.0
+offset_bottom = 109.0
+color = Color(0.627451, 0.5686275, 0.5803922, 1)
+
+[node name="GemasLabel" type="Label" parent="Imagenes/Gemas"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 28.0
+offset_right = 226.0
+offset_bottom = 111.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="TextureButton" type="TextureButton" parent="Imagenes/Gemas"]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 20.0
+offset_right = 343.0
+offset_bottom = 111.0
+texture_normal = ExtResource("6_htrrj")
+texture_pressed = ExtResource("7_fr0j5")
+stretch_mode = 0
+
+[node name="Botones" type="Node" parent="."]
+
+[node name="PVP" type="Button" parent="Botones"]
+modulate = Color(1, 0.24313726, 0.17254902, 1)
+offset_left = 1.0
+offset_top = 362.0
+offset_right = 632.0
+offset_bottom = 519.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 80
+text = "JUGADOR vs JUGADOR"
+alignment = 0
+
+[node name="AI" type="Button" parent="Botones"]
+modulate = Color(1, 0.24313726, 0.17254902, 1)
+offset_left = 1.0
+offset_top = 530.0
+offset_right = 632.0
+offset_bottom = 687.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 80
+text = "vs IA (EN PROGRESO)"
+alignment = 0
+
+[node name="Volver" type="Button" parent="Botones"]
+modulate = Color(1, 0.24313726, 0.17254902, 1)
+offset_top = 866.0
+offset_right = 426.0
+offset_bottom = 957.0
+theme_override_font_sizes/font_size = 70
+text = "VOLVER"
+alignment = 0

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://13rwdoa0aljo"]
+
+[ext_resource type="Texture2D" uid="uid://xphe5qc1drba" path="res://assets/menu/tellos_de_2.png" id="1_nkeq7"]
+[ext_resource type="Script" uid="uid://bv10eytfufrwu" path="res://scripts/menu/controles.gd" id="1_wqjbc"]
+[ext_resource type="Texture2D" uid="uid://w8sn0dvimf0t" path="res://assets/menu/logo editable.png" id="2_8xwci"]
+[ext_resource type="Texture2D" uid="uid://b215c0881nucb" path="res://assets/menu/controles.png" id="3_6c1dq"]
+
+[node name="controles" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wqjbc")
+
+[node name="Imagenes" type="Node" parent="."]
+
+[node name="Fondo" type="TextureRect" parent="Imagenes"]
+offset_right = 1926.0
+offset_bottom = 1079.0
+texture = ExtResource("1_nkeq7")
+
+[node name="Logo" type="TextureRect" parent="Imagenes"]
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 302.0
+offset_bottom = 291.0
+texture = ExtResource("2_8xwci")
+expand_mode = 1
+
+[node name="Controles" type="TextureRect" parent="Imagenes"]
+offset_left = 262.0
+offset_top = -7.0
+offset_right = 1919.0
+offset_bottom = 1024.0
+texture = ExtResource("3_6c1dq")
+
+[node name="Botones" type="Node" parent="."]
+
+[node name="Volver" type="Button" parent="Botones"]
+modulate = Color(1, 0.24313726, 0.17254902, 1)
+offset_top = 918.0
+offset_right = 426.0
+offset_bottom = 1022.0
+theme_override_font_sizes/font_size = 70
+text = "VOLVER"
+alignment = 0

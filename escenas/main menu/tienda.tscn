@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmobw31kp6xak"]
+
+[ext_resource type="Script" uid="uid://lp4yga2xi0ka" path="res://scripts/menu/tienda.gd" id="1_6ocve"]
+[ext_resource type="Texture2D" uid="uid://xphe5qc1drba" path="res://assets/menu/tellos_de_2.png" id="1_hvk06"]
+[ext_resource type="Texture2D" uid="uid://w8sn0dvimf0t" path="res://assets/menu/logo editable.png" id="2_rm8mr"]
+[ext_resource type="Texture2D" uid="uid://d4litqo2yjg1g" path="res://assets/menu/Captura de pantalla 2025-11-10 232739.png" id="4_cp0vm"]
+[ext_resource type="Texture2D" uid="uid://bf0jmbl5slths" path="res://assets/menu/Captura de pantalla 2025-11-10 234227.png" id="5_hdpal"]
+[ext_resource type="Texture2D" uid="uid://bh815ydkk783o" path="res://assets/menu/Captura de pantalla 2025-11-11 000658.png" id="5_to75a"]
+
+[node name="tienda" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6ocve")
+
+[node name="Imagenes" type="Node" parent="."]
+
+[node name="Fondo" type="TextureRect" parent="Imagenes"]
+offset_right = 1926.0
+offset_bottom = 1079.0
+texture = ExtResource("1_hvk06")
+
+[node name="Logo" type="TextureRect" parent="Imagenes"]
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 302.0
+offset_bottom = 291.0
+texture = ExtResource("2_rm8mr")
+expand_mode = 1
+
+[node name="SkinPJ" type="TextureRect" parent="Imagenes"]
+offset_left = 140.0
+offset_top = 298.0
+offset_right = 952.0
+offset_bottom = 854.0
+texture = ExtResource("4_cp0vm")
+
+[node name="ColorRect" type="ColorRect" parent="Imagenes/SkinPJ"]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 437.0
+offset_right = 749.0
+offset_bottom = 505.0
+color = Color(0.7647059, 0.79607844, 0.7529412, 1)
+
+[node name="TimerLabel" type="Label" parent="Imagenes/SkinPJ"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 520.0
+offset_top = 447.0
+offset_right = 670.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 35
+
+[node name="Gemas" type="TextureRect" parent="Imagenes"]
+offset_left = 315.0
+offset_top = 85.0
+offset_right = 739.0
+offset_bottom = 284.0
+texture = ExtResource("5_hdpal")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Imagenes/Gemas"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 38.0
+offset_right = 398.0
+offset_bottom = 176.0
+color = Color(0.627451, 0.5686275, 0.5803922, 1)
+
+[node name="GemasLabel" type="Label" parent="Imagenes/Gemas"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 58.0
+offset_right = 276.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="GemasCompra" type="TextureRect" parent="Imagenes"]
+offset_left = 1079.0
+offset_top = 292.0
+offset_right = 1831.0
+offset_bottom = 877.0
+texture = ExtResource("5_to75a")
+
+[node name="ColorRect" type="ColorRect" parent="Imagenes/GemasCompra"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 467.0
+offset_right = 665.0
+offset_bottom = 535.0
+color = Color(0.7058824, 0.7490196, 0.7529412, 1)
+
+[node name="Botones" type="Node" parent="."]
+
+[node name="Volver" type="Button" parent="Botones"]
+modulate = Color(1, 0.24313726, 0.17254902, 1)
+offset_top = 866.0
+offset_right = 426.0
+offset_bottom = 957.0
+theme_override_font_sizes/font_size = 70
+text = "VOLVER"
+alignment = 0
+
+[node name="Compra" type="Button" parent="Botones"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1113.0
+offset_top = 739.0
+offset_right = 1795.0
+offset_bottom = 843.0
+theme_override_font_sizes/font_size = 70
+text = "$10.99
+"

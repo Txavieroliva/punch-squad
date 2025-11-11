@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Punch Squad"
-run/main_scene="uid://8v6lb6j1gjyn"
+run/main_scene="uid://d4mrsmq2c2uh6"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [display]

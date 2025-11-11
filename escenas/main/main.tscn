@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://8v6lb6j1gjyn"]
+[gd_scene load_steps=8 format=3 uid="uid://8v6lb6j1gjyn"]
 
 [ext_resource type="Script" uid="uid://c1xvdmb7grtyy" path="res://scripts/main/main.gd" id="1_8ujuo"]
 [ext_resource type="Texture2D" uid="uid://bijaw47vor1yh" path="res://assets/fondos/Fondo.jpg" id="1_e0ogj"]
 [ext_resource type="PackedScene" uid="uid://x75mri3gi67o" path="res://escenas/jugador/jugador_1.tscn" id="2_e0ogj"]
 [ext_resource type="PackedScene" uid="uid://dokkacc7s0enq" path="res://escenas/jugador/jugador_2.tscn" id="2_g6o4e"]
+[ext_resource type="Script" uid="uid://d262set8ooomi" path="res://scripts/main/pause_menu.gd" id="5_lnepl"]
 [ext_resource type="PackedScene" uid="uid://bni3n01vdx3c0" path="res://escenas/hud/hud.tscn" id="5_sj1lj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ogj"]
@@ -11,6 +12,8 @@ size = Vector2(1922.5, 60)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ujuo")
+
+[node name="HUD" parent="." instance=ExtResource("5_sj1lj")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(962, 539.75006)
@@ -40,4 +43,43 @@ shape = SubResource("RectangleShape2D_e0ogj")
 [node name="Jugador2" parent="." instance=ExtResource("2_g6o4e")]
 position = Vector2(1705, 685)
 
-[node name="HUD" parent="." instance=ExtResource("5_sj1lj")]
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1924.0
+offset_bottom = 1080.0
+script = ExtResource("5_lnepl")
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 1926.0
+offset_bottom = 1076.0
+
+[node name="Pausa" type="Label" parent="PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 420.0
+offset_right = 1066.0
+offset_bottom = 516.0
+theme_override_font_sizes/font_size = 70
+text = "PAUSA"
+
+[node name="Reanudar" type="Button" parent="PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 544.0
+offset_right = 1150.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 70
+text = "REANUDAR"
+
+[node name="MenuPrincipal" type="Button" parent="PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 696.0
+offset_right = 1262.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 70
+text = "MENÚ PRINCIPAL"

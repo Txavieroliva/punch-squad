@@ -88,14 +88,14 @@ func check_combo() -> void:
 		trigger_combo("Combo 2", 2)
 		return
 
-func trigger_combo(name: String, id: int) -> void:
+func trigger_combo(names: String, id: int) -> void:
 	if combo_active: return
 	combo_active = true
-	print("¡" + name + "!")
+	print("¡" + names + "!")
 	style_system.add_style_points(style_system.combo_style_bonus * (id + 1))
 	# Feedback visual (igual)
 	var label = Label.new()
-	label.text = name
+	label.text = names
 	label.modulate = Color(1, 0.8, 0)
 	label.add_theme_font_size_override("font_size", 28)
 	label.position = global_position + Vector2(-40, -60)
@@ -108,18 +108,18 @@ func trigger_combo(name: String, id: int) -> void:
 	current_combo.clear()
 	combo_active = false
 
-func trigger_combo_with_animation(name: String, id: int, anim_name: String) -> void:
+func trigger_combo_with_animation(names: String, id: int, anim_name: String) -> void:
 	if combo_active: return
 	combo_active = true
 	# INTERRUMPIR ATAQUE Y REPRODUCIR COMBO ESPECIAL
 	is_attacking = true
 	animation_manager.play(anim_name, true)
 	enable_hitbox()
-	print("¡" + name + " - ANIMACIÓN ESPECIAL!")
+	print("¡" + names + " - ANIMACIÓN ESPECIAL!")
 	style_system.add_style_points(style_system.combo_style_bonus * (id + 1) + 50) # Bonus extra
 	# Feedback visual
 	var label = Label.new()
-	label.text = name
+	label.text = names
 	label.modulate = Color(1, 0.8, 0)
 	label.add_theme_font_size_override("font_size", 32)
 	label.position = global_position + Vector2(-40, -60)

@@ -9,6 +9,7 @@ extends Node2D
 @onready var player1_style = $Jugador1/StyleSystem
 @onready var player2_style = $Jugador2/StyleSystem   # ✅ corregido
 @onready var hud = $HUD
+@onready var pause_menu = $PauseMenu
 
 
 var p1_rounds: int = 0
@@ -113,3 +114,20 @@ func reset_round():
 	player2_hitbox.monitoring = true
 	player2_punch_hitbox.monitoring = false
 	player2.animation_manager.play("Idle")
+	# RESET ESTILO (delegado al StyleSystem)
+	player1.style_system.reset_style()
+	player2.style_system.reset_style()
+	
+	# Forzar actualización visual en HUD (por si hubiera desincronía)
+	var style_letter_p1 = ["D", "C", "B", "A", "S"][player1.style_system.current_style_level]
+	var style_letter_p2 = ["D", "C", "B", "A", "S"][player2.style_system.current_style_level]
+	hud.p1_style_meter.upgrade_style(style_letter_p1)
+	hud.p2_style_meter.upgrade_style(style_letter_p2)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		# Si el juego está pausado, ESC reanuda
+		if get_tree().paused:
+			pause_menu.hide_menu()
+		else:
+			pause_menu.show_menu()
