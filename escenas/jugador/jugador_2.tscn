@@ -428,9 +428,7 @@ player_suffix = "p2"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.838889, 0.77722234)
 sprite_frames = SubResource("SpriteFrames_d565x")
-animation = &"Jump"
-frame = 1
-frame_progress = 1.0
+animation = &"Idle"
 
 [node name="PlayerHitboxCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.33333334, 21.666668)

@@ -10,6 +10,7 @@ extends Node2D
 @onready var player2_style = $Jugador2/StyleSystem   # ✅ corregido
 @onready var hud = $HUD
 @onready var pause_menu = $PauseMenu
+@onready var win_menu = $WinMenu
 
 
 var p1_rounds: int = 0
@@ -18,20 +19,23 @@ var max_rounds: int = 3
 var round_timer := 99.0
 var round_active := true
 
-var p1_start_pos: Vector2 = Vector2(225, 685)
-var p2_start_pos: Vector2 = Vector2(1705, 685)
+var p1_start_pos: Vector2 = Vector2(225, 790)
+var p2_start_pos: Vector2 = Vector2(1705, 790)
 
 func _ready():
 	player1.player_suffix = "p1"
 	player2.player_suffix = "p2"
 	player1.global_position = p1_start_pos
 	player2.global_position = p2_start_pos
-	
+	MusicManager.play_gameplay_music()
 	hud.reset_rounds()
 	
 	# Conectar los cambios de estilo
 	player1_style.style_changed.connect(_on_p1_style_changed)
 	player2_style.style_changed.connect(_on_p2_style_changed)
+	win_menu.restart_requested.connect(_on_restart_match)
+	win_menu.return_to_menu_requested.connect(_on_return_to_menu)
+
 
 func _process(delta):
 	if player1.get_node("MovementSystem").direction.x == 0:
@@ -61,17 +65,20 @@ func player_died(dead_player):
 		p2_rounds += 1
 	else:
 		p1_rounds += 1
+
 	hud.update_rounds(p1_rounds, p2_rounds)
-	
+
 	await get_tree().create_timer(2.5).timeout
-	reset_round()
-	
+
+	# ¿Alguien ganó el match?
 	if p1_rounds >= max_rounds:
-		print("¡P1 GANA EL MATCH!")
-		get_tree().change_scene_to_file("res://victoria_p1.tscn")
+		show_win_menu("Player 1")
 	elif p2_rounds >= max_rounds:
-		print("¡P2 GANA EL MATCH!")
-		get_tree().change_scene_to_file("res://victoria_p2.tscn")
+		show_win_menu("Player 2")
+	else:
+		reset_round()
+
+
 
 func reset_round():
 	round_timer = 99
@@ -131,3 +138,25 @@ func _unhandled_input(event):
 			pause_menu.hide_menu()
 		else:
 			pause_menu.show_menu()
+
+func show_win_menu(winner_name: String):
+	get_tree().paused = true
+	win_menu.set_winner_text(winner_name)
+	win_menu.visible = true
+
+	# Ocultar el HUD y el PauseMenu
+	hud.visible = false
+	pause_menu.visible = false
+
+func _on_restart_match():
+	get_tree().paused = false
+	p1_rounds = 0
+	p2_rounds = 0
+	hud.reset_rounds()
+	win_menu.visible = false
+	hud.visible = true
+	reset_round()
+
+func _on_return_to_menu():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://main_menu.tscn")

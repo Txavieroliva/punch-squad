@@ -30,7 +30,7 @@ func _ready():
 	button_salir.pressed.connect(_on_salir_pressed)
 	button_controles.pressed.connect(_on_controles_pressed)
 	gem_add_button.pressed.connect(_on_add_gems)
-	
+	MusicManager.play_menu_music()
 	# Actualizar labels iniciales
 	_update_ui()
 	

@@ -6,6 +6,7 @@ extends Control
 func _ready():
 	boton_local.pressed.connect(_on_boton_local_pressed)
 	boton_volver.pressed.connect(_on_boton_volver_pressed)
+	MusicManager.play_menu_music()
 
 func _on_boton_local_pressed():
 	get_tree().change_scene_to_file("res://escenas/main menu/local.tscn")  # Ruta al modo local

@@ -204,7 +204,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wp4lq")
 }],
-"loop": true,
+"loop": false,
 "name": &"Combo_1",
 "speed": 12.0
 }, {
@@ -364,7 +364,7 @@ script = ExtResource("1_xw8t7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.838889, 0.77722234)
 sprite_frames = SubResource("SpriteFrames_clxmg")
-animation = &"Uppercut"
+animation = &"Combo_1"
 
 [node name="PlayerHitboxCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.33333334, 21.666668)

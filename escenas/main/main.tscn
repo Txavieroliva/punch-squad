@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://8v6lb6j1gjyn"]
+[gd_scene load_steps=9 format=3 uid="uid://8v6lb6j1gjyn"]
 
 [ext_resource type="Script" uid="uid://c1xvdmb7grtyy" path="res://scripts/main/main.gd" id="1_8ujuo"]
-[ext_resource type="Texture2D" uid="uid://bijaw47vor1yh" path="res://assets/fondos/Fondo.jpg" id="1_e0ogj"]
 [ext_resource type="PackedScene" uid="uid://x75mri3gi67o" path="res://escenas/jugador/jugador_1.tscn" id="2_e0ogj"]
 [ext_resource type="PackedScene" uid="uid://dokkacc7s0enq" path="res://escenas/jugador/jugador_2.tscn" id="2_g6o4e"]
+[ext_resource type="Texture2D" uid="uid://e4f8fbpohrj8" path="res://assets/fondos/Punch_Squad_Gameplay_Background.png" id="3_lnepl"]
 [ext_resource type="Script" uid="uid://d262set8ooomi" path="res://scripts/main/pause_menu.gd" id="5_lnepl"]
 [ext_resource type="PackedScene" uid="uid://bni3n01vdx3c0" path="res://escenas/hud/hud.tscn" id="5_sj1lj"]
+[ext_resource type="Script" uid="uid://b4yosos5lkc74" path="res://scripts/main/win_menu.gd" id="7_e8ae5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ogj"]
 size = Vector2(1922.5, 60)
@@ -16,18 +17,18 @@ script = ExtResource("1_8ujuo")
 [node name="HUD" parent="." instance=ExtResource("5_sj1lj")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(962, 539.75006)
-scale = Vector2(1.605, 1.5977778)
-texture = ExtResource("1_e0ogj")
+position = Vector2(955.0001, 541)
+scale = Vector2(1.0083333, 1.0000001)
+texture = ExtResource("3_lnepl")
 
 [node name="Jugador1" parent="." instance=ExtResource("2_e0ogj")]
-position = Vector2(225, 685)
+position = Vector2(213, 790)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(570, 584)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(393.75, 365)
+position = Vector2(394, 469)
 shape = SubResource("RectangleShape2D_e0ogj")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
@@ -41,7 +42,7 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_e0ogj")
 
 [node name="Jugador2" parent="." instance=ExtResource("2_g6o4e")]
-position = Vector2(1705, 685)
+position = Vector2(1693, 790)
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 2
@@ -83,3 +84,47 @@ offset_right = 1262.0
 offset_bottom = 800.0
 theme_override_font_sizes/font_size = 70
 text = "MENÚ PRINCIPAL"
+
+[node name="WinMenu" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1924.0
+offset_bottom = 1080.0
+script = ExtResource("7_e8ae5")
+
+[node name="Panel" type="Panel" parent="WinMenu"]
+layout_mode = 0
+offset_right = 1926.0
+offset_bottom = 1076.0
+
+[node name="Ganador" type="Label" parent="WinMenu/Panel"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 420.0
+offset_right = 1270.0
+offset_bottom = 516.0
+theme_override_font_sizes/font_size = 70
+text = "X JUGADOR GANÓ!"
+
+[node name="Reiniciar" type="Button" parent="WinMenu/Panel"]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 544.0
+offset_right = 1150.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 70
+text = "REANUDAR"
+
+[node name="MenuPrincipal" type="Button" parent="WinMenu/Panel"]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 696.0
+offset_right = 1262.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 70
+text = "MENÚ PRINCIPAL"
+
+[connection signal="pressed" from="WinMenu/Panel/Reiniciar" to="WinMenu" method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="WinMenu/Panel/MenuPrincipal" to="WinMenu" method="_on_menu_principal_pressed"]

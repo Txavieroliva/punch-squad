@@ -17,6 +17,7 @@ func _ready():
 	actualizar_gemas()
 	boton_comprar.pressed.connect(_on_comprar_pressed)
 	boton_volver.pressed.connect(_on_volver_pressed)
+	MusicManager.play_menu_music()
 
 func _on_comprar_pressed():
 	gemas += 1000

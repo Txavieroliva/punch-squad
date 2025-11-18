@@ -42,3 +42,5 @@ offset_bottom = 1022.0
 theme_override_font_sizes/font_size = 70
 text = "VOLVER"
 alignment = 0
+
+[connection signal="pressed" from="Botones/Volver" to="." method="_on_volver_pressed"]
