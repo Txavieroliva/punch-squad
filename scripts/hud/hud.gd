@@ -56,6 +56,6 @@ func show_style_letter(player_id: int, letter_scene: PackedScene):
 	if letter.has_node("Label"):
 		var label = letter.get_node("Label")
 		var tween = create_tween()
-		var intensity = 2.0 + (player_id * 0.2)
+		#var intensity = 2.0 + (player_id * 0.2)
 		tween.tween_property(label, "scale", Vector2(1.1, 0.9), 0.05)
 		tween.tween_property(label, "scale", Vector2(1.0, 1.0), 0.05)
