@@ -86,7 +86,6 @@ func apply_hit_penalty(damage: float = 25.0) -> void:
 	var threshold = style_points_to_next[clamp(current_style_level, 0, style_points_to_next.size() - 1)]
 	emit_signal("style_changed", current_style_level, max(0, current_style_points), threshold)
 
-
 func play_style_up_effect() -> void:
 	var style_letter = get_style_letter()
 	var hud = get_tree().root.get_node("Main/HUD") if get_tree().root.has_node("Main/HUD") else null
